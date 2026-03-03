@@ -1110,7 +1110,7 @@ impl ContextBuilder {
         let root_shape = RootShape::default();
 
         let host_hooks = self.host_hooks.unwrap_or(Rc::new(DefaultHooks));
-        let clock = self.clock.unwrap_or_else(|| Rc::new(StdClock));
+        let clock = self.clock.unwrap_or_else(|| Rc::new(StdClock::new()));
         let realm = Realm::create(host_hooks.as_ref(), &root_shape)?;
         let vm = Vm::new(realm);
 
